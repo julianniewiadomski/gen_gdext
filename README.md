@@ -1,0 +1,1 @@
+Quick and dirty rust gdextension generator with GUI.
