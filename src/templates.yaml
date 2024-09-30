@@ -1,0 +1,29 @@
+gitignore: |
+  .godot/
+  rust/
+
+lib_content: |
+  use godot::prelude::*;
+
+  struct {project_name};
+
+  #[gdextension]
+  unsafe impl ExtensionLibrary for {project_name} {}
+
+gdextension: |
+  [configuration]
+  entry_symbol = "gdext_rust_init"
+  compatibility_minimum = 4.2
+  reloadable = true
+
+cargo_toml: |
+  [package]
+  name = "{project_name}"
+  version = "0.1.0"
+  edition = "2021"
+
+  [lib]
+  crate-type = ["cdylib"]
+
+  [dependencies]
+  godot = { git = "https://github.com/godot-rust/gdext", branch = "master" }
